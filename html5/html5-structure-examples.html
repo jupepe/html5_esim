@@ -1,0 +1,52 @@
+<!doctype html>
+<head>
+<title>Newsarticle document template</title>
+<meta charset="UTF-8"> 
+</head>
+
+<body>
+<h2>>Newsarticle doc template</h2>
+
+<article class="story" itemscope="itemscope" itemtype="http://schema.org/NewsArticle">
+   <header>
+      The header can be used to wrap a article's table of contents,
+      <h1 itemprop="headline">story heading</h1>
+      <div class="image-thumbnail">
+      <img src="..." alt="description text" itemprop="image"/></div>
+      <div class="meta">
+         <div class="author">
+            <span class="dt">Author:</span><span class="dd" itemprop="author">author name(s)</span>
+         </div>
+         <div class="published">
+            <span class="dt">Published:</span><span class="dd" itemprop="datePublished">Published data</span>
+         </div>
+         <div class="copyright">
+            <span class="dt">Copyright:</span><span class="dd" itemprop="datePublished">Copyright/license info</span>
+         </div>
+         It's possible to use tags: dl, dt and dd also. 
+         dl tag is used for declaring a definition list.
+      </div>
+      <div class="abstract" itemprop="description">
+         <p> Here comes abstract for this news article  </p>
+      </div>
+   </header>
+   <div class="main">
+      <h2 class="content" itemprop="articleBody"> The body of the article </h2>
+      <aside>
+         aside tag is used to represent content that is related to the surrounding content within an article. 
+         This type of ontent is often represented in sidebars. 
+         <section class="storyList">
+            <div class="main">
+              <article class="story" itemscope="itemscope" itemtype="http://schema.org/NewsArticle">
+                 Article tag is used to represent an article.
+                 The content within the article tag is independent from the other content on the site. 
+              </article>
+            </div>
+         </section>
+      </aside>
+   </div>
+   <footer> IN footer used for read more links, links to comment section, etc.) </footer>
+</article>
+
+</body>
+</html>

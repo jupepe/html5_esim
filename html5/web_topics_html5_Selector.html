@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+<title>Javasript and selectors</title>
+<meta charset="UTF-8"> 
+ <script> 
+  function showinfo(e) {
+    if (e.srcElement)  elem = e.srcElement;
+    else if (e.target) elem = e.target;
+    document.getElementsByClassName("info")[0].innerHTML += "clicked: " + elem.tagName.toUpperCase() + ""; 
+  }
+  function addEventHandler() {
+   var headers = document.querySelectorAll("article header h2");
+   var paragraphs = document.querySelectorAll("article p");
+   
+   for (var i=0; i<headers.length; i++) {
+     headers[i].onclick = showinfo;
+   }
+   for (var i=0; i<paragraphs.length; i++) {
+     paragraphs[i].onclick = showinfo;
+   }
+  }
+  window.onload = addEventHandler;
+ </script>
+  
+</head>
+
+<body>
+
+<div class="info" style="background: yellow">..,</div>
+
+<section>
+
+<article>
+ <header>
+  <h2>HTML5</h2>
+ </header>
+  <p>The goal is to learn about the new HTML5 features of the language, as well as learn the basic use of JavaScript API with HTML5 markup.</p>
+<p>The aim is get to know about the new semantic elements, and the basic form controls.</p>
+<p>
+The goal is to get to know the most important HTML5's new features, such as Audio, Video, microdata, the new form elements, as well basics of the drawing to Canvas element.
+</p>
+</article>
+
+<article>
+ <header><h2>CSS3</h2></header>
+ <p>The goal is to learn CSS3 styles and practical application. There's also the introduction of CSS3 for use with the JavaScript programming language.
+ The goal is to learn the basics of responsive design, allowing support for a variety of mobile device types.</p>
+ <p>Getting to know the new CSS selectors (CSS Selectors), CSS animations, transformations, and new text-style and font-style properties.</p>
+</article>
+
+<article>
+ <header><h2>JavaScript</h2></header>
+ <p>The goal is to learn the basics of JavaScript, the object-oriented programming in JavaScript, the updating DOM document object model, as well as event processing criteria.</p> 
+ <p>There is also an introduction to JSON format, as well as to Ajax.</p>
+</article>
+
+<article>
+ <header><h2>jQuery</h2></header>
+ <p>jQuery library is used every modern JavaScript applications. It is the de facto standard that can be applied in all client-side Web development.</p>
+ <p>The goal is to learn the how to use jQuery library for a client-side Web application development. you will also getting to know how access to the basic features of the jQuery library, such as options, functions, and event handling, as well as to know the most important plug-in API (eg. jQueryUI).</p>
+</article>
+
+<article>
+ <header><h2>HTML5 and JavaScript</h2></header>
+ <p>We introduce to brand new HTML5 JavaScript API's. There is introduction to different JavaScript API's such as Video API, Offline Web Applications, storing of information for the local machine (Web Storage), Location API and Web Workers API.</p>
+ <p>The main issue addressed is the Canvas element to use JavaScript API for making programs.</p>
+</article>
+
+<article>
+ <header><h2>JQuery Mobile</h2></header>
+ <p>jQuery Mobile is a jQuery plug-in and widget-collection, which provides a platform-independent API for mobile application development and mobile device that allows a Web user experience is almost the workstation level.</p>
+ <p>The goal is to learn the jQuery Mobile library of the most important properties of a touch screen use, a small display resolution support, and page navigation.</p>
+</article>
+
+</section>
+
+
+
+<!-- Removed <div class="nav"> => korvattu <header><nav> -rakenteella-->
+ <header>
+  <nav>
+   <ul>
+    <li>HTML5</li>
+    <li>CSS3</li>
+    <li>JavaScript</li>
+    <li>jQuery</li>
+    <li>HTML5 and JavaScript</li>
+    <li>jQuery Mobile</li>
+   </ul>
+  </nav>
+</header>  
+
+
+
+<!-- <div class="sidebar"> replaced with  <aside> -element-->
+<aside>
+<p>There are lot of Client-Side Web Technologies we should learn to use these days. Here are most common and W3C's standard based technologies.</p>
+</aside>
+
+
+</body>

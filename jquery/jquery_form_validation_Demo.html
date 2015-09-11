@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>jquery form validation</title>
+ <meta charset="UTF-8"> 
+
+<style> 
+<title>jquery form demo</title>
+/* Setting styles for jQuery validate plugin's classes: error and valid */
+.error {   
+  color: red;
+  background-color: yellow;
+}
+.valid {
+  color: green;
+}  
+</style>
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+<script>
+$( function() {
+  $('#form').validate({
+    rules: {
+      productid: {
+        required: true,
+        number: true,
+        rangelength: [3, 4]
+      },
+      postnumber: {
+        required: true,
+        number: true,
+        rangelength: [4, 5]
+      }
+
+    },
+    messages: {
+    postnumber: "Enter 5 digits",
+      productid: "Enter 3-4 digits"    
+    },
+    
+  // this blocks submitting form
+    submitHandler: function(form) {
+      return false;
+    }
+  });
+});
+</script>
+
+</head>
+
+<body>
+
+<h3>JQuery with CSS3 transition </h3>
+
+<form id="form" method=POST action="#">
+<div id="controls">
+   <label for="postnumber">Post number:</label> 
+   <input type="text" name="postnumber" id="postnumber" /> <br>
+   <label for="productid">Product Id:</label>
+   <input type="text" name="productid" id="productid" /> <br>
+   <input type=button value="send information">
+    
+</div>
+</form>
+
+
+
+</body>
+</html>
+

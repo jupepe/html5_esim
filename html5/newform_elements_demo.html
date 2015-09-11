@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+<meta charset=utf-8>
+<title>HTML 5 forms test</title>
+ <style>
+ html {
+	font-family:Verdana;
+	font-size:1.5em;
+ }
+
+ h1 {
+	color:#5999DE;
+ }
+
+ form {
+	font:100% Lucinda Grande, Sans-serif;
+	margin: 0;
+	padding: 0;	
+	width: 90%;
+	border:1px solid #ccc;
+	padding: 10px;
+ }
+
+ .entry {
+	margin-bottom:.5em;  
+	display:table-row;
+ }
+
+ label {
+	color:#666666;
+    display:table-cell;
+	text-align: right;
+ }
+ input, textarea {
+	margin-left:10px;
+	display:table-cell;
+ }
+
+ .button {
+	padding-left:140px;
+	padding-bottom:5px;
+	padding-top:5px;
+ }
+
+ /* input validation pseudo classes */
+ input:required {
+    outline: 2px red solid;
+	color: red;
+ }
+
+ input:focus:required:invalid {
+  background: pink;
+ }
+ input:required:valid {
+  background-color: #fff;
+ }
+
+</style>
+</head>
+<body>
+
+
+
+<form>
+
+   <div class="entry">
+    <label for="name">Name</label>
+    <input id="name" name="name" required>
+   </div>
+   <div class="entry">
+    <label for="email">Email</label>
+    <input id="email" name="email" type=email required>
+   </div>
+    
+	<div class=entry>
+        <label for=ptitle>Title</label>
+        <input id=ptitle   list=titlelist type=text>
+        <datalist id=titlelist>
+            <option label=Mr value=Mr>
+            <option label=Mrs value=Mrs>
+            <option label=Ms value=Ms> 
+        </datalist> 
+		<code>(Mr, Mrs, Ms)</code>
+    </div>
+	
+	<div class=entry>
+	  <label for=postcode>postnumber</label>
+	 <input id="postcode" name="postcode" type="number" min="10000" max="99999" required />
+	</div>
+    
+	<div class=entry>
+        <label for=age>Age</label>
+        <input id=age  name=age type=number required min=18 max=100> <code>age > 18</code>
+    </div>
+	
+    <div class=entry>
+        <label for=dob>Date of Birth</label>
+        <input id=dob  name=dob type=date><code>date</code>
+    </div>
+
+	<div class=entry>
+	    <label for=cid>Client ID</label>
+        <input id=cid name=cid pattern="[A-Z][0-9]{3,4}"
+        placeholder="uppercase letters plus 3-4 digits" required> 
+		<code>[A-Z][0-9]{3,4}</code>
+    </div>
+	
+	<div class=entry>
+	 <label for=feedback>Feedback of our product</label>
+  	 <textarea id=feedback name=feedback rows=5 cols=40 wrap=hard placeholder="Give your feedback here"></textarea>
+	</div>
+
+    <div class=button>
+        <button type=submit>Send</button>
+    </div>
+</form>
+</body>
+</html>

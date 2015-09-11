@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+ <title>Canvas animation from html5canvastutorials.com</title>
+ <meta charset="UTF-8"> 
+ <script>  
+  function drawLines() {
+    var canvas = document.getElementById("canvas1");
+    var context = canvas.getContext("2d");
+
+    // draw the first line
+    context.beginPath();
+    context.lineWidth = "10";
+    context.strokeStyle = "blue";
+    context.moveTo(50, 100);
+    context.lineTo(50, 50);
+    context.lineTo(100, 100);
+    context.lineTo(100, 40);
+
+    context.stroke();
+
+    context.beginPath();
+    context.moveTo(150, 100);
+    context.lineTo(150, 40);
+    context.stroke();
+
+    context.beginPath();
+    context.moveTo(200, 100);
+    context.lineTo(200, 40);
+    context.stroke();
+    context.beginPath();
+    context.arc(220, 60, 15, 1.1 * Math.PI, 2.8 * Math.PI, false);
+    context.stroke();
+
+    context.beginPath();
+    context.moveTo(275, 100);
+    context.lineTo(250, 100);
+    context.lineTo(250, 75);
+    context.lineTo(270, 75);
+    context.lineTo(250, 75);
+    context.lineTo(250, 50);
+    context.lineTo(275, 50);
+    
+    context.stroke();
+    context.beginPath();
+    context.arc(220, 60, 15, 1.1 * Math.PI, 2.8 * Math.PI, false);
+    context.stroke();
+
+
+}
+
+function drawMan() {
+    var canvas = document.getElementById('canvas1');
+    var context = canvas.getContext('2d');
+
+    context.save();
+    // Draw the path that is going to be clipped
+    context.beginPath();
+    context.fillStyle = 'green';
+    context.arc(100, 205, 40, 0, 2 * Math.PI, false);
+    context.fill();
+    context.beginPath();
+    context.fillStyle = 'green';
+    context.arc(100, 285, 50, 0, 2 * Math.PI, false);
+    context.fill();
+    context.beginPath();
+    context.fillStyle = 'green';
+    context.arc(100, 400, 70, 0, 2 * Math.PI, false);
+    context.fill();
+    // Now clip() the canvas
+    //context.clip();
+    context.lineWidth = 3;
+
+    context.strokeStyle = 'navy';
+
+    // Further drawing will not be restricted
+    context.fillStyle = 'black';
+    context.beginPath();
+    context.moveTo(85, 200);
+    context.lineTo(115, 200);
+    context.arc(80, 200, 5, 0, 2 * Math.PI, false);
+    context.stroke();
+    context.beginPath();
+    context.arc(120, 200, 5, 0, 2 * Math.PI, false);
+    context.stroke();
+
+}
+
+function drawArc() {
+    var canvas = document.getElementById('canvas1');
+    var context = canvas.getContext('2d');
+
+    var radius = 50;
+    var startAngle = 0.8 * Math.PI;
+    var endAngle = 2.2 * Math.PI;
+    var counterClockwise = false;
+
+    context.beginPath();
+    context.arc(100, 160, radius, startAngle, endAngle, counterClockwise);
+    context.lineWidth = 15;
+
+    context.strokeStyle = 'yellow';
+    context.stroke();
+}
+
+function draw() {
+    drawLines();
+    drawArc();
+    drawMan();
+}
+
+  window.addEventListener("load", draw, false);
+ </script>
+  
+</head>
+
+<body>
+
+<h3>Canvas clip reset</h3>
+
+<canvas width=700 height=800 id="canvas1"></canvas>
+
+
+</body>
+</html>

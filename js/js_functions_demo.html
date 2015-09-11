@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Functions</title>
+<meta charset="UTF-8"> 
+
+</head>
+<body>
+ <div id="results">
+
+<script>
+
+function printArrayElements(element, ind, array) {
+    console.log("a[" + ind + "] = " + element);
+}
+
+function printArray(args) {
+ args.forEach(printArrayElements); // Printing all elements with callback function printArrayElements()
+}
+
+function sum(args) {
+ var s= 0;
+  for (var i = 0; i < args.length; i++) {
+    s += args[i];
+  }
+  return s;
+}
+
+
+// initialize array and count the sum
+var arr = [1,2,34,4,5,6,6,7,7,87,6,45,34,43,34,65,101];
+var s = sum(arr);
+console.log("summa on " + s);
+
+var resultElement = document.getElementById("results");
+resultElement.innerHTML = "katso tulos - console (F12) ja sieltä logging";
+
+</script>
+
+</body>
+
+</html>

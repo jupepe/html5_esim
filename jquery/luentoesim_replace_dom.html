@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<title>exercise model</title>
+<script src="http://code.jquery.com/jquery-1.11.2.js"></script>
+</head>
+
+<body>
+  <h1>Otsikko</h1>
+  <h2>Otsikko 2</h2>
+  <h3>Otsikko 3 </h3>
+  <h1>Otsikko 4</h1>
+
+  <ul>
+   <li><a class="jslinkit" href="http://www.w3schools.com/js/js_obj_intro.asp">Properties</a> are values associated with objects
+
+   <li><a href="http://www.w3schools.com/js/js_obj_intro.asp">Methods</a> are actions that objects can perform
+   <li><a href="http://www.w3schools.com/js/js_functions.asp">Functions</a> can be used with Objects
+   <li><a class="jslinkit" href="http://javascript.info/tutorial/objects#creating-objects">Creating</a> objects 
+  </ul>
+
+  <script>
+   $("h1, h2, h3").html("<u>Uusi alleviivattu otsikko</u>");
+   $("a").text("Katsoppa tätä linkkiä");
+   $("a.jslinkit").text("Katsoppa tätä JavaScript linkkiä!!!");
+  </script>
+
+</body>
+
+</head>

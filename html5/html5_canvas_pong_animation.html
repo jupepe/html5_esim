@@ -1,0 +1,251 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+ <title>Canvas Text translate</title>
+ <meta charset="UTF-8"> 
+
+</head>
+
+<body>
+
+<canvas width=400 height=300 id="canvas1"></canvas>
+
+<div style="background:green;">Player 1: <span id="score1"></span></div>
+<div style="background:red;">Player 2: <span id="score2"></span></div>
+
+<pre>
+Player Instructions:
+Player 1 Up: 	W
+Player 1 Down: 	S
+Player 2 Up: 	Up Arrow
+Player 2 Down: 	Down Arrow
+Start/Pause the game: 	MouseClick in Canvas Area
+</pre>
+
+<script>
+
+window.requestAnimFrame = (function(callback) {
+   return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+     function(callback) {
+       window.setTimeout(callback, 1000 / 40);
+      };
+   })();
+
+var canvas; 
+var playarea;// = canvas.getContext('2d');
+
+var area, paddle_1, paddle2, ball;
+var up=-1, down=1, inc=5;
+var paddle_1_score, paddle_2_score;
+//key codes
+var keys = {"up": 38, "down": 40, "W": 87, "S": 83};
+var runAnimation = { value: false };
+
+function GameObject(w,h,x,y,dir) {
+	this.width = w; 
+	this.height = h; 
+	this.x = x;
+	this.y = y;
+	this.direction = dir;
+	  	  
+/*    this.setX = function(val) {
+	    if (val < 0)
+		  throw "X negative";
+		if (age > 400)
+		  throw "X over 400 not allowed";
+		this.x = val;
+	  }
+
+    this.setY = function(val) {
+	    if (val < 0)
+		  throw "Y negative";
+		if (age > 300)
+		  throw "Y over 300 not allowed";
+		this.x = val;
+	  }
+*/
+ }
+
+ 
+function restoreDefaults() {
+	area = {"width": 400, "height":300, "margin": 10, "foreground": "#FFFFFF", "background": "#000000"};
+	
+	paddle_1 = new GameObject(8, 32, area["margin"], area['height'] /2, 0);
+	paddle_2 = new GameObject(8, 32, area["width"] - 18, area['height'] /2, 0);
+	ball     = new GameObject(8, 8, area["width"]/2, area['height'] /2, Math.random() * 360);
+	ball.speed = 2;
+}
+ 
+function initGame()
+{
+    canvas = document.getElementById('canvas1');
+	playarea = canvas.getContext('2d');
+	paddle_1_score=0; paddle_2_score=0;
+
+    restoreDefaults();	
+}
+
+function renderPlayarea() {
+	//move paddles
+	if (paddle_2.direction != 0)       paddle_2.y += inc*paddle_2.direction;
+    if (paddle_1.direction != 0)       paddle_1.y += inc*paddle_1.direction;	
+	//move ball
+	playarea.moveTo(ball.x+8, ball.y+8);
+	ball.x += Math.cos((ball.direction)*Math.PI/180) * ball.speed;
+	ball.y += Math.sin((ball.direction)*Math.PI/180) * ball.speed;
+
+	playarea.beginPath();
+	
+	playarea.clearRect(0,0,area['width'],area['height']);
+	playarea.fillStyle = area['background'];	
+	playarea.fillRect(0,0, area['width'], area['height']);	
+	
+	playarea.rect(paddle_1.x,paddle_1.y,paddle_1.width,paddle_1.height);
+	playarea.rect(paddle_2.x,paddle_2.y,paddle_2.width,paddle_2.height);
+	
+//	playarea.fillStyle = area['foreground'];
+//	playarea.fill();
+	
+	playarea.rect(ball.x, ball.y, ball.width, ball.height);
+
+	playarea.closePath();
+	
+    playarea.fillStyle = area['foreground'];
+	playarea.fill();
+	
+	drawDividers(playarea);
+	
+	
+}
+
+function drawDividers(playarea) {
+    // Drawing dividers in the game area	
+	
+	
+	playarea.moveTo(paddle_1.x+paddle_1.width, 0);
+	playarea.lineTo(paddle_1.x+paddle_1.width, 0);
+	playarea.lineTo(paddle_1.x+paddle_1.width, canvas.height);
+	playarea.moveTo(paddle_2.x, 0);
+	playarea.lineTo(paddle_2.x, 0);
+	playarea.lineTo(paddle_2.x, canvas.height);
+	
+	
+	playarea.moveTo(canvas.width/2, 0);
+	playarea.lineTo(canvas.width/2, 0);
+	playarea.lineTo(canvas.width/2, canvas.height);
+
+	playarea.lineWidth = 1;		
+	playarea.strokeStyle = area['foreground'];
+	playarea.stroke();
+}
+
+function testCollisions()
+{
+   
+	//Check that paddles don't go beyond play area
+	if (((paddle_1.y <= 0) && (paddle_1.direction === up)) || ((paddle_1.y >= (area.height - paddle_1.height)) && (paddle_1.direction === down)))
+		paddle_1.direction = 0;
+	if (((paddle_2.y <= 0) &&	(paddle_2.direction === up)) || ((paddle_2.y >= (area.height - paddle_2.height)) && (paddle_2.direction === down)))
+		paddle_2.direction = 0;
+		
+	if (ball.x <= 0) {
+		paddle_2_score++;
+		restoreDefaults();
+		console.log(paddle_1.score + "," + paddle_2.score + "..." + ball.speed);
+	}
+	else if (ball.x >= (area.width - ball.width)) {
+		paddle_1_score++
+		restoreDefaults(); // Return the default state of the game!
+		console.log(paddle_1.score + "," + paddle_2.score + "..." + ball.speed);
+	}
+	
+	//check to see if ball hit top or bottom wall. if so, change direction
+	if ((ball.y >= (area.height - ball.height)) || ball.y <= 0)
+		ball.direction = -ball.direction;
+	
+	//check to see if the ball hit a paddle, and if so, change ball angle dependant on where it hit the paddle
+	if ((ball.x <= (paddle_1.x + paddle_1.width)) && (ball.y >= paddle_1.y) && (ball.y <= (paddle_1.y + paddle_1.height))) {
+		ball.direction = -ball.direction/2;
+		ball.speed += .2;
+	}
+	else if (((ball.x + ball.width) >= paddle_2.x) && (ball.y >= paddle_2.y) && (ball.y <= (paddle_2.y + paddle_2.height))) {
+		ball.direction = (180+ball.direction)/2;
+		ball.speed += .2;
+	}
+	showScore(); // update game statistics
+}
+
+function showScore()
+{
+  var p1 = document.getElementById("score1");
+  var p2 = document.getElementById("score2");
+  p1.innerHTML = paddle_1_score;
+  p2.innerHTML = paddle_2_score;
+}
+
+
+//handle input
+document.onkeydown = function(ev) {
+	switch(ev.keyCode) {
+		case keys.W:
+			paddle_1.direction = up;
+			break;
+		case keys.S:
+			paddle_1.direction = down;
+			break;
+		case keys.up:
+			paddle_2.direction = up;
+			break;
+		case keys.down:
+			paddle_2.direction = down;
+			break;
+	}
+}
+
+document.onkeyup = function(ev) {
+	switch(ev.keyCode) 	{
+		case keys.W:
+		case keys.S:
+			paddle_1.direction = 0;
+			break;
+		case keys.up:
+		case keys.down:
+			paddle_2.direction = 0;
+			break;
+	}
+}
+
+
+function animate() {
+   if (runAnimation.value) {
+       // clear
+      playarea.clearRect(0, 0, canvas.width, canvas.height);
+      // draw
+      renderPlayarea();
+      testCollisions();
+      // request new frame
+      requestAnimFrame(function() {
+         animate();
+       });
+    }
+ }
+
+/* add click listener to canvas to start or pause the game */
+document.getElementById('canvas1').addEventListener('click', function() {
+
+ runAnimation.value = !runAnimation.value; // pause or not animation flag
+
+ if(runAnimation.value) {
+    animate();
+  }
+});
+
+initGame();
+renderPlayarea();
+
+</script>
+
+
+</body>
+</html>

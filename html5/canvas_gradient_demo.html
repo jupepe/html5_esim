@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+<title>Canvas Gradient example</title>
+<meta charset="UTF-8"> 
+
+ <script> 
+  
+  function draw() {
+    var canvas = document.getElementById('canvas1');
+    var context = canvas.getContext('2d');
+
+    // Create Linear Gradients
+    var grad = context.createLinearGradient(0,0,0,150);
+    grad.addColorStop(0, '#0000FF');
+    grad.addColorStop(0.5, '#0033CC');
+    grad.addColorStop(0.8, '#66AA00');
+    grad.addColorStop(1, '#FFFFFF');
+
+    var grad2 = context.createLinearGradient(50,150,100,95);
+    grad2.addColorStop(0.5, '#A70');
+    grad2.addColorStop(1, 'rgba(0,150,0,0)');
+
+	var grad3 = context.createRadialGradient(105,105,20,112,100,50);
+    grad3.addColorStop(0, '#00C9FF');
+    grad3.addColorStop(0.8, '#00B5E2');
+    grad3.addColorStop(1, 'rgba(0,201,255,0)');
+	
+    context.fillStyle = grad;
+	context.fillRect(10,10,130,130);
+
+    context.fillStyle = grad2;
+	context.fillRect(30,70,150,150);
+    	
+	context.fillStyle = grad3;
+    context.fillRect(50,50,150,150);
+
+    
+
+	
+  }
+  window.addEventListener("load", draw, false);
+ </script>
+  
+</head>
+
+<body>
+
+<div class="info" style="background: yellow">..,</div>
+
+<canvas id="canvas1"></canvas>
+
+
+</body>
+</html>

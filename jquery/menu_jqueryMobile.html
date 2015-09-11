@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+ 
+<html>
+
+<head>
+<title>jQuery - Hello Example</title>
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.css">
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
+<script>
+	$(document).bind('mobileinit',function(){
+		$.mobile.selectmenu.prototype.options.nativeMenu = false;
+	});
+</script>
+</head>
+ 
+<body>
+
+ 
+<div data-role="page">
+ 
+<div data-role="header">
+ 
+<h1>JQuery Mobile - Menus example</h1>
+ 
+</div> <!-- /page -->
+ 
+<div data-role="content">
+ 
+
+		<ul data-role="listview">
+			<li>
+				<h3><a href="http://jquery.com/">JQuery</a> </h3>
+				<p><strong> a multi-browser JavaScript library</strong> designed to simplify the client-side scripting of HTML.</p>
+				<p class="ui-li-aside">latest: <strong>1.8.1 </strong>/ August 30, 2012</p>
+			</li>
+						<li>
+				<h3><a href="http://jqueryui.com/">JQuery UI</a> </h3>
+				<p><strong>a JavaScript library build top on JQuery</strong> that provides abstractions for low-level interaction and animation, advanced effects and high-level, themeable widgets</p>
+				<p class="ui-li-aside">latest: <strong>1.8.23 </strong>/ August 15, 2012</p>
+			</li>
+			<li>
+				<h3><a href="http://jquerymobile.com/">JQuery Mobile</a></h3>
+				<p>is a touch-optimized web framework or <strong>mobile framework</strong></p>
+				<p>Platforms supported mobile browsers including iOS, Android, Blackberry, WebOS, Symbian, Windows Phone 7 etc.>
+				<p class="ui-li-aside">latest: <strong>1.1.1 </strong>/ July 12, 2012</p>
+			</li>
+			
+			
+	<div data-role="fieldcontain">
+	<label for="select-fw" class="select">Choose your favourite Mobile Web Framework:</label>
+	<select name="select-fw" id="select-fw">
+		<option value="jquerymob"><a href="http://jquerymobile.com/">JQuery Mobile</a></option>
+		<option value="jqtouch"><a href="http://jqtouch.com/">jQTouch</a></option>
+		<option value="sencha">Sencha Touch</option>
+		<option value="phonegap">PhoneGap</option>
+	</select>
+	</div>
+	
+	<div>
+	<label for="select-fw-2" class="select"><strong>Choose All Mobile Web Framework you want to try</strong></label>
+	<select tabindex="-1" name="select-fw-2" id="select-fw-2" multiple="multiple" data-native-menu="false">
+		<option value="jquerymob">JQuery Mobile</option>
+		<option value="jqtouch">jQTouch</option>
+		<option value="sencha">Sencha Touch</option>
+		<option value="phonegap">PhoneGap</option>
+		<option value="phonegap">Titanium</option>
+		<option value="phonegap">M-Project</option>
+	</select>
+	</div>
+
+
+			
+			</div> <!-- /content -->
+ 
+<div data-role="footer">
+ 
+<h4>JQuery Mobile - Menus </h4>
+ 
+</div> <!-- /footer -->
+ 
+</div> <! -- /page -->
+ 
+</body>
+ 
+</html>

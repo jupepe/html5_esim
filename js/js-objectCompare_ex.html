@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+  <title>Object sorting with compare function</title>
+  <meta charset="utf-8">
+  
+  
+</head>
+
+<body>
+<h2>Example of How to use Sort array of Objects in JavaScript</h2>
+<p>The employees array above is an array of objects where properties can be different data types (string, numeric, or date).
+ The sort() method can be used to sort the array based on the values of one of these properties</p>
+
+<div id="results" style="position: relative; left: 200px;"> </div>
+
+<script>
+
+
+var employees=[];
+employees[0]={name:"John", age:32, startdate :"March 12, 2010"};
+employees[1]={name:"Jill", age:24, startdate:"June 6, 2012"};
+employees[2]={name:"Bill", age:53, startdate:"December 2, 1987"};
+employees[3]={name:"Sara", age:45, startdate:"April 1, 2000"};
+employees[4]={name:"Julia",age:47, startdate:"January 10, 1989"};
+
+function printEmployees(employees) {
+  var str = "";
+  for (var i in employees) 
+    str += "{" + employees[i].name  + "," + employees[i].age + "," + employees[i].startdate + "} ";
+  return str;
+}  
+
+//Compare "a" and "b", and return -1, 0, or 1    
+employees.sort(function(a, b){
+ return a.age-b.age
+})
+
+
+var emp1 = [].concat(employees);
+emp1.sort(function(a, b){ 
+ if (a.name.toLowerCase()<b.name.toLowerCase())  return -1; 
+ if (a.name.toLowerCase()>b.name.toLowerCase()) return 1;
+ return 0;
+});
+
+var emp2 = [].concat(employees);
+emp2.sort(function(a, b){ 
+ var ad = new Date(a.startdate).valueOf(), bd = new Date(b.startdate).valueOf();
+ if (ad<bd)  return -1; 
+ if (ad>bd) return 1;
+ return 0;
+});
+
+
+	 
+var div = document.getElementById("results");
+div.innerHTML += printEmployees(employees) + "<br>";
+div.innerHTML += printEmployees(emp1) + "<br>";
+div.innerHTML += printEmployees(emp2) + "<br>";
+	
+  </script>
+
+</body>
+
+</html>
+

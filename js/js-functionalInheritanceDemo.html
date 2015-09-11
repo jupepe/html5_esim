@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+  <title>function and closure</title>
+  <meta charset="utf-8">
+  
+  
+</head>
+
+<body>
+<h2>functional Inheritance pattern JavaScript</h2>
+<div><a href="http://javascript.crockford.com/private.html">Functional inheritance</a> in JavaScript by Douglas Crockford.<br> 
+The following is an example in the style of the functional pattern for inheritance from the following Book: <b>Douglas Crockford's JavaScript: The Good Parts</b></div>
+
+<script>
+
+var phone = function(spec) {
+  var that = {};
+
+  that.getPhoneNumber = function() {
+    return spec.phoneNumber;
+  };
+
+  that.getDescription = function() {
+    return "This is a phone that can make calls.";
+  };
+  
+
+  return that;
+};
+
+var smartPhone = function(spec) {
+  var that = phone(spec);
+  spec.signature = spec.signature || "sent from " + that.getPhoneNumber();
+
+  that.sendEmail = function(emailAddress, message) {
+    console.log(emailAddress + message + "," + spec.signature);
+  };
+  
+  var super_getDescription = that.getDescription();
+  
+  that.getDescription = function() {
+    return super_getDescription +  " Smart phone can also send email messages.";
+  };
+
+  return that;
+};
+
+// Instances of each of these types could be created and used as follows:
+
+var myPhone = phone({"phoneNumber": "8675309"});
+var mySmartPhone = smartPhone({"phoneNumber": "5555555", "signature": "Adios"});
+mySmartPhone.sendEmail("noone@example.com", "I can send email from my phone!");   
+
+console.log(myPhone.getDescription());
+console.log(mySmartPhone.getDescription());
+console.log(myPhone);
+console.log(mySmartPhone);
+</script>
+
+</body>
+
+</html>
+
+
+
+

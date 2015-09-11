@@ -1,0 +1,52 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta charset="UTF-8"></head>
+<body>
+<pre id="info">Tänne tietoa skriptiltä<br>Tulokset: <i style="color: olive; font-size: 1.4em"> </i><span></span></span></pre>
+<script> 
+
+// Tänne JavaScript-koodi
+function Joukkue(nimi, p) {
+    this.nimi = nimi;
+    this.pelaaja = p;
+    this.tulosta = function() {
+      var tulos = document.getElementById("info").getElementsByTagName("i")[0];
+      tulos.innerHTML += this.nimi + "|" + this.pelaaja + "|" + 
+      this.maalit + "<br>."; return this;
+    }
+}
+
+Joukkue.prototype.tulosta2 = function() {
+      var tulos = document.getElementById("info").getElementsByTagName("i")[0];
+      tulos.innerHTML += this.nimi + "|" + this.pelaaja + "|" + 
+      this.maalit + "<br>."; return this;
+    }
+
+Joukkue.prototype.asetaMaalit = function(m) {
+  this.maalit = m; return this;
+}
+Joukkue.prototype.asetaNimi = function(n) {
+  this.nimi = n;  return this;
+}
+
+// Olioiden luominen ja asetettujen metodien kutsuminen
+var suomi = new Joukkue("Suomi", "Selänne");
+var ruotsi= new Joukkue("Ruotsi", "Sedin");
+
+suomi.tulosta().asetaNimi("leijonat").tulosta().asetaMaalit(5).tulosta();
+ruotsi.tulosta().asetaNimi("3kronor").tulosta().asetaMaalit(2).tulosta();
+new Joukkue("Venäjä", "Malkin").tulosta2().asetaMaalit(4).tulosta2();
+
+
+var tulos = document.getElementById("info").getElementsByTagName("span")[0];
+
+// toSource deguggaus toimii vain Firefoxissa!
+
+tulos.innerHTML += suomi.toSource() + "<br>"; 
+tulos.innerHTML += ruotsi.toSource() + "<br>"; 
+
+
+</script>
+
+
+
+</body></html>

@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+
+<title>Exercise model - jQuery Mobile</title>
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.css">
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
+
+ <script>
+ $(document).ready(function() {
+  
+  $("#button").bind('tap', (function(e) {
+     if ( $("div#date1").attr("data-role") == "fieldcontain") {
+       alert("data role == fieldcontain");    
+	 $("div").attr("data-role","none");
+	 $("input").css("background-color", "green").css("font-size", "1.2em");
+
+	}
+	else {
+	 alert("data role == none");    
+	 $("div").attr("data-role","fieldcontain");
+	 $("input").css("background-color", "yellow").css("font-size", "0.8em");
+	}
+  })); // end of click handler
+  
+});
+ 
+ </script>
+
+</head>
+
+<body>
+<h2>HTML 5 form with JQuery Mobile</h2>
+
+<div data-role="content">
+  <div class="content-primary">
+
+<form name="ex10" action="" method="post">
+<table>
+	<div id="date1" data-role="fieldcontain">
+		<label for="date">Date</label>
+		<input type="date" name="date" id="date" required data-mini="false"  />
+	</div>
+	<div data-role="fieldcontain">
+		<label for="email">Email:</label>
+		<input type="email" name="email" id="email" value="" required placeholder="email@address.com" data-mini="false"  />
+	</div>
+	<div data-role="fieldcontain">
+		<label for="tel">Phone:</label>
+		<input type="tel" name="tel" id="tel" value="" placeholder="+358401234567" required data-mini="false"  />
+	</div>
+	<div data-role="fieldcontain">
+		<label for="url">URL:</label>
+		<input type="url" name="url" id="url" value="" placeholder="http://www.example.com" required data-mini="false" />
+	</div>
+	<div data-role="fieldcontain">
+		<label for="color">Color:</label>
+		<input type="color" name="color" id="color" value="#c30000" required data-mini="false"  />
+	</div>
+	<div data-role="fieldcontain">
+		<label for="search">Search:</label>
+		<input type="search" name="search" id="search" placeholder="Search this site" required data-mini="false"  />
+	</div>
+	<div data-role="fieldcontain">
+		<label for="number">Number between 0-10:</label>
+		<input type="number"  name="number" id="number" pattern="[0-9]*" min="0" max="10" value="5" required data-mini="false"  />
+	</div>
+	<div data-role="fieldcontain">
+		<label for="range">Range between 1-10:</label>
+		<input type="range" name="range" id="range" min="1" max="10" step="1" required data-highlight="true" data-mini="false" />
+	</div>
+        <div data-role="fieldcontain">
+		<input type="button" id="button" name="button" data-mini="false" value="Change input styles" />
+	</div>
+
+	<div data-role="fieldcontain">
+		<input type="submit" name="submit" data-mini="false" value="Submit" />
+	</div>
+</table>
+</form>
+
+</div>
+</div>
+
+</body>
+</html>

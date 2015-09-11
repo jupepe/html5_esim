@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<title>example</title>
+<script src="http://code.jquery.com/jquery-1.11.2.js"></script>
+</head>
+
+<body>
+  <h1>Deferrers - klikkaa painikkeita saadaksesi Deferrer-muuttujien arvot</h1>
+  <div id="output">Katso tulokset tästä...Mitä tapahtuu, jos painikkeita klikataan toisessa järjestyksessä?</div>
+  <button id="readyButton1">Klikkaa ensin tästä!</button>
+  <button id="readyButton2">Klikkaa sitten tästä!</button>
+
+  <script>
+var future1 = $.Deferred(); // keskeneräiset työt, jotka pitää tehdä valmiiksi
+var future2 = $.Deferred(); // kun työt valmiina, sitten tulee teksti-ilmoitus!
+var future3 = $.Deferred();
+
+$.when( future1, future2 ).done(function ( out1, out2 ) {
+
+    $('#output').append("<div style='color:green'>" + out1 + " and " + out2 + "</div>");
+});
+ 
+$.when( future1, future2, future3 ).done(function ( out1, out2, out3 ) {
+    // Kun kaikki Deferrerit on saatu suoritettua (resolve(tulos))
+    console.log( out1 ); 
+    console.log( out2 );
+    console.log( out3 );  
+    $('#output').append("<div style='color:red'>" +  out3 + "</div>");
+});
+
+
+future1.resolve( "First" );
+
+$('#readyButton1').on('click',  
+     function (e) {
+       future2.resolve( "Second future is now resolved!" ); 
+   });
+ 
+
+$('#readyButton2').on('click',  
+     function (e) {
+       future3.resolve( "and finally Third future was resolved, when button was clicked!" );       
+   });
+
+
+
+  </script>
+
+</body>
+</html>
+

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+ <title>jquery with css transforms demo</title>
+ <meta charset="UTF-8"> 
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+
+<!-- loading own script library -->
+<script src="transformations.js"></script>
+
+<style> 
+
+#animElem {
+  position: absolute; 
+  width:200px;
+  height:100px;
+  background-color: lime;
+  top: 300px; 
+  left: 300px
+ 
+  -webkit-transform:rotate(45deg) scale(0.9) skew(-14deg);
+  transform:rotate(45deg) scale(0.9) skew(-14deg);
+}
+</style>
+
+</head>
+
+<body>
+
+<h3>Dynamic CSS3 transition with jQuery </h3>
+
+<form>
+<div id="controls">
+          <label for="rotation">Rotation:</label> <input type="text" id="rotation" value="45" size="4" /> deg, 
+          <label for="skew">Skew:</label><input type="text" id="skew" value="14" size="4" /> deg,
+          <label for="scale">Scale:</label><input type="text" id="scale" value="90" size="4" /> %
+  <input type=button id=transform name=transform value="transform DIV">
+</div>
+</form>
+
+<div id="animElem" >Animating "Hello World"</div>
+
+</body>
+</html>
+

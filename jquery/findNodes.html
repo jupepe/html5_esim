@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+<meta charset="utf-8">
+<title>Parents, children and siblings</title>
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script>
+
+$(document).ready(function() {
+
+ // selecting all elements in the document
+
+ $('ul * *').click(function() {
+  
+  // Information of all parents of the current node
+  var allParents = $( this ).parents()
+   .map(function() {
+    return this.tagName;
+   })
+   .get()
+   .join( " => " );
+ 
+  // Information of all siblings of the current node
+  var allSiblings = $( this ).siblings()
+   .map(function() {
+    return this.tagName;
+   })
+   .get()
+   .join( " && " );
+ 
+  // Information of all children of the current node
+  var allChildren = $( this ).children()
+   .map(function() {
+    return this.tagName;
+   })
+   .get()
+   .join( " | " );
+ 
+   // first remove current content 
+   $( ".relationshipInfo" ).contents().remove();
+   // and then append relationship between objects information
+   $( ".relationshipInfo" ).append( $("<div></div>").append("parents: " + allParents) );
+   $( ".relationshipInfo" ).append( $("<div>").append("siblings: " + allSiblings) );
+   $( ".relationshipInfo" ).append( $("<div>").append("children: " + allChildren) );
+  });
+
+
+}); // end of document ready function
+
+
+</script>
+<style>
+div.relationshipInfo {
+  background-color: lime;
+  box-shadow: 10px 10px 5px #888888;
+  padding: 10px 10px 10px 10px;
+  border-radius:15px;
+}
+</style>
+</head>
+
+<body>
+<h1>JQuery Object relationhips Demo</h1>
+	
+<div class="relationshipInfo"> Info of siblings, childs and parents of the selected node!</div>
+
+ <div class="jsObj">
+  <h1>JavaScript objects </h1>
+  <p>Some basic properties of JavaScript objects</p>
+  <ul>
+   <li>Properties</a> are values associated with objects
+
+   <li><b>Methods</b> are <i>actions</i> that <code>objects</code> can <u>perform</u>
+   <li><strong>Functions</strong> can be used with Objects
+   <li><i>Creating</i> objects 
+   <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/prototype">All Objects</a> in JavaScript inherit methods and properties from Object.prototype, and all objects in JavaScript are descended from Object.
+   <li><u>Object.getPrototypeOf</u> accessing the original prototype property of the object’s constructor function
+  </ul>
+ </div>
+
+
+</body>
+
+</html>

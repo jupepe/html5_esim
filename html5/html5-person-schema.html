@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+
+<head>
+<title>Schema.org examples</title>
+<meta charset="UTF-8"> 
+</head>
+
+<body>
+<p>
+Schema.org is an initiative launched on 2 June 2011 by Bing, Google and Yahoo! (the operators of the then world's largest search engines) to "create and support a common set of schemas for structured data markup on web pages." On 1 November Yandex (whose search engine is the largest one in Russia) joined the initiative. They propose using their schemas and Microdata in HTML5 to mark up website content with metadata about itself.    
+</p>	
+	<div itemscope itemtype="http://schema.org/Movie">
+  <h1 itemprop="name">Avatar</h1>
+  <div itemprop="director" itemscope itemtype="http://schema.org/Person">
+  Director: <span itemprop="name">James Cameron</span> 
+(born <time itemprop="birthDate" datetime="1954-08-16">August 16, 1954</time>)
+  </div>
+  <span itemprop="genre">Science fiction</span>
+  <a href="../movies/avatar-theatrical-trailer.html" itemprop="trailer">Trailer</a>
+</div>
+
+<script>
+window.onload = function() {
+var div = document.getElementsByTagName("div");
+
+for(var i=0; i<div.length; i++) {
+  if(div[i].getAttribute("itemprop")=="director")
+   alert(div[i].innerHTML);
+}
+
+var span = document.getElementsByTagName("div");
+
+for(var i=0; i<span.length; i++) {
+   if (span[i].getAttribute("itemtype")=="http://schema.org/PostalAddress")
+     alert(span[i].innerHTML);
+ 
+  }
+
+}
+</script>
+
+	<div itemscope itemtype="http://schema.org/Organization">
+      <span itemprop="name">Google.org (GOOG)</span>
+
+    Contact Details:
+      <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+        Main address:
+          <span itemprop="streetAddress">38 avenue de l'Opera</span>
+          <span itemprop="postalCode">F-75002</span>
+          <span itemprop="addressLocality">Paris, France</span>
+        ,
+      </div>
+        Tel:<span itemprop="telephone">( 33 1) 42 68 53 00 </span>,
+        Fax:<span itemprop="faxNumber">( 33 1) 42 68 53 01 </span>,
+        E-mail: <span itemprop="email">secretariat(at)google.org</span>
+
+    Members:
+    - National Scientific Members in 100 countries and territories: Country1, Country2, ...
+    - Scientific Union Members, 30 organizations listed in this Yearbook:
+      <span itemprop="member" itemscope itemtype="http://schema.org/Organization">
+        Member1
+      </span>,
+      <span itemprop="member" itemscope itemtype="http://schema.org/Organization">
+        Member2
+      </span>,
+
+    History:
+    </div>
+	
+    <div itemscope itemtype="http://schema.org/Person">
+      <span itemprop="name">Jane Doe</span>
+      <img src="janedoe.jpg" alt="desc" itemprop="image" >
+
+      <span itemprop="jobTitle">Professor</span>
+      <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+        <span itemprop="streetAddress">
+          20341 Whitworth Institute
+          405 N. Whitworth
+        </span>
+        <span itemprop="addressLocality">Seattle</span>,
+        <span itemprop="addressRegion">WA</span>
+        <span itemprop="postalCode">98052</span>
+      </div>
+      <span itemprop="telephone">(425) 123-4567</span>
+      <a href="mailto:jane-doe@xyz.edu" itemprop="email">
+        jane-doe@xyz.edu</a>
+
+      Jane's home page:
+      <a href="http://www.janedoe.com" itemprop="url">janedoe.com</a>
+
+      Graduate students:
+      <a href="http://www.xyz.edu/students/alicejones.html" itemprop="colleague">
+        Alice Jones</a>
+      <a href="http://www.xyz.edu/students/bobsmith.html" itemprop="colleague">
+        Bob Smith</a>
+    </div>
+	
+	    <div itemscope itemtype="http://schema.org/Event">
+      <a itemprop="url" href="nba-miami-philidelphia-game3.html">
+      NBA Eastern Conference First Round Playoff Tickets:
+      <span itemprop="name"> Miami Heat at Philadelphia 76ers - Game 3 (Home Game 1) </span>
+      </a>
+
+      <meta itemprop="startDate" content="2016-04-21T20:00">
+        Thu, 04/21/16
+        8:00 p.m.
+
+      <div itemprop="location" itemscope itemtype="http://schema.org/Place">
+        <a itemprop="url" href="wells-fargo-center.html">
+        Wells Fargo Center
+        </a>
+        <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+          <span itemprop="addressLocality">Philadelphia</span>,
+          <span itemprop="addressRegion">PA</span>
+        </div>
+      </div>
+
+      <div itemprop="offers" itemscope itemtype="http://schema.org/AggregateOffer">
+        Priced from: <span itemprop="lowPrice">$35</span>
+        <span itemprop="offerCount">1938</span> tickets left
+      </div>
+    </div>
+	</body>
+	
+</html>

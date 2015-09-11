@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+  <meta charset=utf-8>
+  <title>Kinetic library test</title>
+
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+      canvas {
+        border: 1px solid #9C9898;		
+      }
+    </style>
+  </head>
+  
+  <body>
+    <div id="container"></div>
+	<h2>Some Very Simple  Animation Test with Kinetic.js</h2>
+    <script src="http://d3lp1msu2r81bx.cloudfront.net/kjs/js/lib/kinetic-v4.4.1.min.js"></script>
+    <script>
+      window.onload = function() {
+        var stage = new Kinetic.Stage({
+          container: 'container',
+          width: 608,
+          height: 400
+        });
+        var layer = new Kinetic.Layer();
+
+        var blueRect = new Kinetic.Rect({
+          x: 150,
+          y: 130,
+          width: 80,
+          height: 50,
+          fill: '#00D2FF',
+          stroke: 'black',
+          strokeWidth: 4
+        });
+
+       var yellowHex = new Kinetic.RegularPolygon({
+        x: stage.getWidth() / 2,
+        y: stage.getHeight() / 2,
+        sides: 6,
+        radius: 80,
+        fill: 'yellow',
+        stroke: 'black',
+        strokeWidth: 4,
+        draggable: true
+      });
+        layer.add(blueRect);
+        layer.add(yellowHex);
+        stage.add(layer);
+
+
+        var angularSpeed = Math.PI;
+        var anim = new Kinetic.Animation(function(frame) {
+          blueRect.rotate(frame.timeDiff * angularSpeed / 1000);
+           yellowHex.setScale(1, Math.sin(frame.time * 2 * Math.PI / 2000) + 0.001);
+        }, layer);
+
+        anim.start();
+      };
+    </script>
+  </body>
+</html>

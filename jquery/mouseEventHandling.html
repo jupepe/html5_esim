@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+<meta charset="utf-8">
+<title>Parents, children and siblings</title>
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script>
+
+$(document).ready(function() {
+
+  $("#obj").on({
+  // If you want to do handle multiple event then chain them in the .on() handler 
+    mouseenter: function () {
+      $( "#info" ).contents().remove();
+      $( "#info" ).append( $(this).clone() );
+    },
+    mouseleave: function () {
+      $( "#info" ).contents().remove();
+      $( "#info" ).append( $("<div>Mouse Leaving  '#obj'..</div>") );
+    }  
+  });
+
+  $("#prop").on({
+    mouseenter: function () {
+      $( "#info" ).contents().remove();
+      $( "#info" ).append( $(this).clone() );
+    },
+    mouseleave: function () {
+      $( "#info" ).contents().remove();
+      $( "#info" ).append( $("<div>Mouse Leaving '#info'..</div>") );
+    }
+  });
+
+
+}); // end of document ready function
+
+
+</script>
+<style>
+#info {
+  background-color: lime;
+  box-shadow: 10px 10px 5px #888888;
+  padding: 10px 10px 10px 10px;
+  border-radius:15px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Event handling demo</h1>
+
+ <div id="obj">
+  <h1>JavaScript objects </h1>
+  <p>Some basic properties of JavaScript objects</p>
+   <li><i>Creating</i> objects 
+   <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/prototype">All Objects</a> in JavaScript inherit methods and properties from Object.prototype, and all objects in JavaScript are descended from Object.
+   <li><u>Object.getPrototypeOf</u> accessing the original prototype property of the object’s constructor function
+  </div>
+
+ <div id="prop">
+  <h1>Object properties </h1>
+  <p>Some basic properties of JavaScript objects</p>
+
+  <ul>
+   <li>Properties</a> are values associated with objects
+
+   <li><b>Methods</b> are <i>actions</i> that <code>objects</code> can <u>perform</u>
+   <li><strong>Functions</strong> can be used with Objects
+  </ul>
+ </div>
+
+ <div id="info">
+   See here!
+ </div>
+
+</body>
+
+</html>

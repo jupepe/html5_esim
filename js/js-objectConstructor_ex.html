@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+  <title>function and closure</title>
+  <meta charset="utf-8">
+  
+  
+</head>
+
+<body>
+<h2>closures and scoping JavaScript</h2>
+<ul>
+<li>In JavaScript any function call that is preceded by the new keyword acts as a constructor.
+<li>Inside the constructor the value of "this" refers to a newly created object
+<li>Only scoping in JavaScript is function scope, all functions act as closures.
+</ul>
+<ul>
+<li>the scope of a variable is the function it was defined
+<li>Any function that run inside this scope will have access to its parent function. 
+<li>parent function do not have access to a child function variable, because it's outside of that child's scope.
+</ul>
+<div><a href="http://javascript.crockford.com/private.html">Private Members</a> in JavaScript by Douglas Crockford</div>
+
+<div id="results" style="position: relative; left: 200px;"> </div>
+
+<script>
+
+
+function Counter(init) {
+    this.count = init;
+    this.increment=function() { this.count++; }
+	this.get=function() { return this.count; } 
+	console.log(this.count); 
+}
+
+function ClosureCounter(init) {
+    var privCounter=0;
+	privCounter = 10;
+	console.log("privCounter" + privCounter); 
+	console.log(this); 
+	return {
+      closureDecrement: function() {
+           privCounter--;
+		   console.log(this.closureDecrement + privCounter); 
+      },
+	  closureIncrement: function() {
+           privCounter++;
+      },
+      closureGet: function() {
+          return privCounter;
+      }
+	}	
+}	
+    
+var c = new Counter(4);
+c.increment();
+c.count++;
+c.count++;
+console.log(c.get()); 
+console.log(c); 
+
+var cc = ClosureCounter();
+cc.closureDecrement();
+cc.closureDecrement();
+cc.privCounter++; // No access
+
+console.log(cc.closureGet());
+console.log(cc);  
+
+var cc2 = new ClosureCounter();
+cc2.closureIncrement();
+cc2.closureIncrement();
+console.log(cc2.closureGet()); 
+
+
+/*
+var employees=[];
+employees[0]={name:"John", age:32, startdate :"March 12, 2010"};
+employees[1]={name:"Jill", age:24, startdate:"June 6, 2012"};
+employees[2]={name:"Bill", age:53, startdate:"December 2, 1987"};
+employees[3]={name:"Sara", age:45, startdate:"April 1, 2000"};
+employees[4]={name:"Julia",age:47, startdate:"January 10, 1989"};
+  var str = "";
+  for (var i in employees) 
+    str += "{" + employees[i].name  + "," + employees[i].age + "," + employees[i].startdate + "} ";
+
+employees.sort(function(a, b){
+ return a.age-b.age
+})
+
+
+var emp1 = [].concat(employees);
+emp1.sort(function(a, b){ 
+ if (a.name.toLowerCase()<b.name.toLowerCase())  return -1; 
+ if (a.name.toLowerCase()>b.name.toLowerCase()) return 1;
+ return 0;
+});
+	
+*/ 
+
+/*	 
+var div = document.getElementById("results");
+div.innerHTML += printEmployees(employees) + "<br>";
+div.innerHTML += printEmployees(emp1) + "<br>";
+div.innerHTML += printEmployees(emp2) + "<br>";
+*/	
+  </script>
+
+</body>
+
+</html>
+

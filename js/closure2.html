@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+  <title>Closure example</title>
+  <meta charset="iso-8859-1">
+  
+  <script>
+
+
+
+function countSum(arr) {
+  var s=0; 
+  
+  // this inner function has access to the outer function's variables, including the parameter
+  // now in Immediate run mode ()()
+  return (function() {
+    for (var i in arr) s += arr[i];
+    return s;
+  })();
+
+}
+
+
+  window.onload = function() {
+  
+    var div = document.getElementById("results");    
+    div.innerHTML += "closure sum test " + countSum([1,2,3,4,5,6,7,8,9,10]) + "<br>";
+  }
+	
+	
+  </script>
+</head>
+
+<body>
+<h2>Example 1 - How to use Closures in JavaScript</h2>
+
+<div id="results" style="position: relative; left: 200px;"> </div>
+
+<p>
+
+A <b>closure</b> is an inner function that has access to the outer (enclosing) function variables. 
+You simple create a closure by adding a function inside another function.
+<p>
+Inner function can also access to parameters of the outer function.
+<p>
+This example show <b><a href="http://benalman.com/news/2010/11/immediately-invoked-function-expression/">Immediately-Invoked Function Expression</a></b> to define closure - where JavaScript is run automatically!
+
+
+</body>
+
+</html>
+

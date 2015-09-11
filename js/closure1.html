@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+  <title>Closure example</title>
+  <meta charset="iso-8859-1">
+  
+  <script>
+
+
+
+function countSum(arr) {
+  
+  // this inner function has access to the outer function's variables, including the parameter
+  function innerSum() {
+    var s=0; 
+    for (var i in arr) s += arr[i];
+    return s;
+  }
+
+  return innerSum();
+}
+
+
+  window.onload = function() {
+  
+    var div = document.getElementById("results");    
+    div.innerHTML += "closure sum test " + countSum([1,2,3,4,5,6,7,8,9,10]) + "<br>";
+  }
+	
+	
+  </script>
+</head>
+
+<body>
+<h2>Example 1 - How to use Closures in JavaScript</h2>
+
+<div id="results" style="position: relative; left: 200px;"> </div>
+
+<p>
+
+A <b><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures">closure</a></b> is an inner function that has access to the outer (enclosing) function variables. 
+You simple create a closure by adding a function inside another function.
+The <a href="http://skilldrick.co.uk/2011/04/closures-explained-with-javascript/">closure</a> has three scope chains accesses: 
+<ul>
+<li>its own scope (variables defined in in curly brackets) 
+<li>to outer function variables 
+<li>to global (=window)  variables.
+
+Inner function can also access to parameters of the outer function.
+
+</p>
+
+</body>
+
+</html>
+

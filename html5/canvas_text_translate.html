@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+<title>Canvas Text translate</title>
+<meta charset="UTF-8"> 
+
+ <script> 
+  
+  function drawText() {
+   var canvas = document.getElementById('canvas1');
+   var context = canvas.getContext('2d');
+   
+   context.font      = "bold 24px Verdana";
+   context.fillText("TESTING", 40, 20);
+
+   context.save();
+   
+   context.translate(150, 180);
+   context.scale(3,3);
+   context.rotate(Math.PI/180*45);   
+   context.fillText("TESTING", 0, 0);
+   context.restore();
+   
+   context.save();
+   context.rotate(-Math.PI/180*45);   
+   context.translate(50, 450);
+   context.scale(2,2);
+   context.fillText("TESTING", 0, 0);
+   context.restore();
+  }
+  
+  window.addEventListener("load", drawText, false);
+ </script>
+  
+</head>
+
+<body>
+
+<h3>Canvas Text translate examples</h3>
+
+<canvas width=700 height=800 id="canvas1"></canvas>
+
+
+</body>

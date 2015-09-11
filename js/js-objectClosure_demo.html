@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+  <title>Debug example</title>
+  <meta charset="iso-8859-1">
+  
+  <script>
+
+  // Closure testing
+  function closureTest(outer) {
+    var temp = 3;
+    return function (inner) {
+      var result = outer + inner + temp;
+      alert("counting: " +  result);
+      return result;
+    }
+  }
+
+	
+  window.onload = function() {
+    var numObj = new Number(5); // object wrapper
+    var ct = closureTest(numObj); // ct is now a closure referencing to numbObj.
+  
+    var div = document.getElementById("results");    
+    div.innerHTML += "closure test " + ct(20) + ", numObj:" + numObj  + "<br>";
+    numObj = 10;
+    ct = closureTest(numObj)
+    div.innerHTML += "closure test " + ct(40) + ", numObj:" + numObj  + "<br>";
+  }
+	
+	
+  </script>
+</head>
+
+<body>
+<h2>Example of How to use Closures in JavaScript</h2>
+
+<div id="results" style="position: relative; left: 200px;"> </div>
+
+
+</body>
+
+</html>
+

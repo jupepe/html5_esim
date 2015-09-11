@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>Google Maps JavaScript API: Simple Streetview Example</title>
+
+ <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAA0Amd74Ii2gXhrVV8QC91TxQm1K9ubtjSPxXKaJXn_w07GC-vChSE5TrT1FCHTe_emguQ5Dln0vS-Kg" 
+       type="text/javascript"></script>
+
+    <script type="text/javascript">
+    
+    var streetview, streetview2;
+
+    function initialize() {
+
+
+   var startPoint = new GLatLng(62.241487, 25.759785);
+      var params = { latlng:startPoint };
+      streetview = new GStreetviewPanorama(document.getElementById("address"), params);
+      GEvent.addListener(streetview, "error", handleNoFlash);
+
+      var startPoint2 = new GLatLng(62.2421026,25.7553562,20);
+      var params2 = { latlng:startPoint2 };
+      streetview2 = new GStreetviewPanorama(document.getElementById("address2"), params2);
+      GEvent.addListener(streetview2, "error", handleNoFlash);
+    }
+
+    function handleNoFlash(errorCode) {
+      if (errorCode == FLASH_UNAVAILABLE) {
+        alert("Error: Flash not supported - No Street View is possible");
+        return;
+      }
+    }  
+    </script>
+  </head>
+
+  <body onload="initialize()" onunload="GUnload()">
+  <h1>Some places in streat view (Flash support is needed)</h1>
+    <div name="address" id="address" style="width: 400px; height: 300px"></div>
+    <div name="address2" id="address2" style="width: 400px; height: 300px"></div>
+
+    <div><a href="http://code.google.com/intl/fi-FI/apis/maps/documentation/services.html#PanoramaObject">Google Maps API - Street View</a></div> 
+  </body>
+</html>
+
+
+
+
+

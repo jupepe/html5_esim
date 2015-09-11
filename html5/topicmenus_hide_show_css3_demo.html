@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+  <title>Menus with css3</title>
+  <meta charset="UTF-8"> 
+
+ <style>
+
+   sec
+   {
+      width: 350px;
+      height: 200px;
+      border: 1px solid #555;
+      font: 14px Arial;
+ 
+      /*.flexbox setup */
+      display: -webkit-flex;
+      -webkit-flex-direction: row;
+      display: flex;
+     -flex-direction: row; 
+   }
+ 
+   .mainmenu > ul > li {
+      -webkit-flex: 1 1 auto;
+      flex: 1 1 auto;
+ 
+      width: 60px; 
+      /*-webkit-transition: width 0.7s ease-out;
+      transition: width 0.7s ease-out; */
+	  -webkit-transition: all 1.6s ease;
+      transition: all 1.6s ease;
+	  
+   }
+ 
+  .mainmenu > ul > li:nth-child(even){ background : cyan; }
+  .mainmenu > ul > li:nth-child(odd) { background : yellow; }
+ 
+   .mainmenu > ul > li:hover
+   {
+        width: 250px;
+		background: purple;
+		font-size: 2.0em;
+   }
+    
+   </style>
+     
+ </head>
+
+ <body>
+ <h3>Manu animation with css3 transitions only</h3>
+  <p>Main Menu demo</p>
+  <div class="mainmenu">
+   <ul>
+   <li>HTML5<img src="http://www.w3.org/html/logo/badge/html5-badge-h-css3-semantics.png"  alt="img" height="30"></li>
+   <li>CSS3</li>
+   <li>JavaScript</li>
+   <li>jQuery</li>
+   <li>HTML5 and JavaScript<img src="http://www.w3.org/html/logo/badge/html5-badge-h-graphics-multimedia-storage.png" alt="img" height="30"></li>
+   <li>jQuery Mobile</li>
+  </ul>
+</div> 
+</body>
+</html>

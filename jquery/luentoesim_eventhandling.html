@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<title>exercise model</title>
+<script src="http://code.jquery.com/jquery-1.11.2.js"></script>
+</head>
+
+<body>
+<h1>Tapahtumankäsittelijä demo  - klikkaa linkkejä tai h1-otsikoita!</h1>
+
+  <h1 id="ekaotsikko">Otsikko</h1>
+  <h2>Otsikko 2</h2>
+  <h3>Otsikko 3 </h3>
+  <h1 id="tokaotsikko">Otsikko 4</h1>
+
+  <ul>
+   <li><a class="jslinkit" href="http://www.w3schools.com/js/js_obj_intro.asp">Properties</a> are values associated with objects
+
+   <li><a href="http://www.w3schools.com/js/js_obj_intro.asp">Methods</a> are actions that objects can perform
+   <li><a href="http://www.w3schools.com/js/js_functions.asp">Functions</a> can be used with Objects
+   <li id="onoffLinkki"><a class="jslinkit" href="http://javascript.info/tutorial/objects#creating-objects">Creating</a> objects. TÄTÄ VOI LAITTAA PÄÄLLE JA POIS! 
+  </ul>
+
+  <button id="setHandlerButton"> Aseta käsittelijät uudelleeen!</button>
+
+  <script>
+    
+    $('#setHandlerButton').on('click', function(e) {
+
+       $('#onoffLinkki').on('click',  // on, off => modernein tapa jQuery event handling -tapa
+         function (e) {
+          alert('on listener: ' + $(this).parent().html());
+          $(this).animate({  fontSize:"+= 5px"  });
+          e.preventDefault(); // estää menon linkkiin!
+          $(this).off("click"); // poistetaan click handler => toimii vain kerran!
+       });
+    });
+
+    $('h1, a').click(function(e)
+    { 
+      var toSource = (e.toSource) ? e.toSource() : JSON.stringify(e);
+      console.debug('Some element clicked');
+      alert( toSource);
+      // alert( e.target.id + ", " + $(this).text());  // event target id, jos id määritelty
+      e.preventDefault(); // estää menon linkkiin!
+    });
+
+   $('h1, a').on('click',  // on, off => modernein tapa jQuery event handling -tapa
+     function (e) {
+       // notice that keyword this refers to the div element 
+       // with class row in DOM tree
+       alert('on listener: ' + $(this).parent().html());
+        $(this).animate({
+            fontSize:"+= 1.2em"
+        });
+
+        $(this).off("click"); // poistetaan click handler => toimii vain kerran!
+
+   });
+
+ 
+
+  </script>
+
+</body>
+</html>
+

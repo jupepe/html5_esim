@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<title>JavaScript - DOM changes</title>
+<meta charset="UTF-8"> 
+
+<script>
+
+function appendNewElement(size, color) {
+  // How to apply to DOM model: DOM=Document Object Model
+  //var elem = document.getElementById("result");
+  var parentNode = document.getElementsByTagName("div")[0];
+  
+  // How you create and append new node into the div element?
+  
+  var elem = document.createElement('div');
+  elem.innerHTML += "Created new element (" + size + "," + color + ")";
+  elem.style.fontSize = size;
+  elem.style.color = color;
+  
+  parentNode.appendChild(elem);
+  
+} 
+  
+</script>
+</head>
+<body onload="appendNewElement('2em', 'green')"> 
+
+<h2>How to add new styled element into the DOM tree</h2>
+
+<h2>Some Firefox tools</h2>
+
+<p style="color:red">Use for example <b>inspect element</b> (Crtl+Shift+I) to inspect created element (see rules and computed on the right side of the browser window) and use also <b>"Copy Outer HTML"</b> to get the HTML content of the created node in Firefox. You can also delete DOM nodes you just created.</p>
+
+<div id="result"></div>
+<form>
+ <input type=text id=txt value=red>
+ <input type=text id=fsize value=12>
+
+  <div style="background-color:gray; font-size:2em"
+  onclick="color=document.getElementById('txt').value; size=document.getElementById('fsize').value; appendNewElement(parseInt(size)+'pt', color)">
+   add new element</div>
+</form>
+
+</body>
+</html>

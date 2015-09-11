@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>jquery foreach demo</title>
+  <meta charset="UTF-8"> 
+  
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+
+  <script>
+   $( function() {
+     $('#changecolor').bind("click", function () {
+      var $mcolor = $("#menucolor").val();
+    var $bcolor = $("#bgcolor").val();
+  
+      $("li").each(function() {      //Or: $.each( $("li"), function() {
+        $(this).css({"color": $mcolor, "background-color": $bcolor} );
+      });
+    
+    $("label").each(function() {      //Or: $.each( $("li"), function() {
+        $(this).css({"color": $bcolor, "background-color": $mcolor} );
+      });
+    
+     });
+     
+   });
+  </script>
+</head>
+
+<body>
+
+ <form>
+<p id="controls">
+    <label for="menucolor">Foreground Color:</label> <input type="color" id="menucolor" /> <br>
+  <label for="bgcolor">Background Color:</label> <input type="color" id="bgcolor" /> <br>
+    <input type=button id=changecolor value="Change color">     
+</p>
+</form>
+ 
+  <h2>Change color with each function demo</h2>
+  <div class="mainmenu">
+   <ul>
+   <li>HTML5<img alt="" src="http://www.w3.org/html/logo/badge/html5-badge-h-css3-semantics.png"  height="30"></li>
+   <li>CSS3</li>
+   <li>JavaScript</li>
+   <li>jQuery</li>
+   <li>HTML5 and JavaScript<img alt="" src="http://www.w3.org/html/logo/badge/html5-badge-h-graphics-multimedia-storage.png" height="30"></li>
+   <li>jQuery Mobile</li>
+  </ul>
+</div> 
+
+</body>
+</html>

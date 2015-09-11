@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Form example</title>
+  <meta charset="UTF-8"> 
+  <script>
+    function appendNewElement(parent, mj) {
+	
+  	 var newElem =document.createElement('span');
+	 newElem.style.color = "#"+(Math.random()*0xFFFFFF<<0).toString(16);
+	 newElem.style.fontSize = (0.5 + Math.random()*2.5) + "em";
+
+     newElem.innerHTML = mj + "(" + newElem.style.fontSize + "," + newElem.style.color + ")";
+
+	 newElem.style.left = '200px';	 
+	 newElem.style.borderStyle = 'groove';
+	 newElem.style.borderWidth = '6pt';
+	 newElem.style.lineHeight = "2em";
+	 
+	 // append new child element (newElem) to the parent node in the DOM tree
+	 parent.appendChild(newElem );
+	 parent.appendChild(document.createElement('br'));
+    }
+  </script>
+</head>
+
+<body>
+<h2>Example of How to append new data with random properties into the DOM three</h2>
+
+<p style="color:red">Use for example <b>inspect element</b> (Crtl+Shift+I) to inspect created element (see rules and computed on the right side of the browser window) and use also <b>"Copy Outer HTML"</b> to get the HTML content of the created node in Firefox.</p>
+
+<div id="uusi" style="position: relative; left: 100px;"></div>
+
+<span onclick="mj=document.getElementById('t1').value + ',' + document.getElementById('t2').value + ',' + document.getElementById('la').value + ',' + document.getElementById('os').value;
+appendNewElement(document.getElementById('uusi'), mj);" style="background-color: blue; font-size: 2.0em;">Add new element</span><br>
+
+<form name="lomake">
+<table>
+  <tr><td>Name</td><td> <input type="text" id="t1" > </td></tr>
+  <tr><td>Age</td><td> <input type="text" id="t2" > </td></tr>
+</table>
+  
+  <div>Choose Programming language? <select id="la">
+	<option>Java</option>
+	<option>PHP</option>
+    <option>JavaScript</option>	
+	<option>C#</option>
+  </select></div> 
+  <div>Choose OS? <select id="os">
+    <option>Windows</option>	
+	<option>Ubuntu Linux</option>
+	<option>Mac OS</option>
+	<option>Android</option>
+  </select></div>   
+ 
+</form>
+
+
+
+</body>
+
+</html>
+

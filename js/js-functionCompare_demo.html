@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+  <title>Function compare</title>
+  <meta charset="utf-8">
+  
+  
+</head>
+
+<body>
+<h2>Example of How to use Sort arrays in JavaScript</h2>
+<p>In sorting function array.sort(),elements are sorted based on the relationship between each pair of elements "a" and "b" and the function's return values negative, zero or positive.</p>
+<ul>
+<li>Less than 0: a is compared to be a lower index  in the resulting array than b (a is before b)
+<li>Zero: a === b
+<li>Greater than 0: b is compared to be a lower index in the resulting array than a (b is before a)
+</ul>
+
+<div id="results" style="position: relative; left: 200px;"> </div>
+
+<script>
+
+//Compare "a" and "b", and return -1, 0, or 1    
+function sortNumbers(a, b) {
+  /*if (a < b) return -1; 
+  else if (a == b) return 0;
+   return 1;  */
+   return 0.5 - Math.random();
+}
+	
+var arr1 = [456, 634, 234, 879, 423, 873, 582, 123, 534, 603];
+arr1.sort();
+
+var arr2 = [].concat(arr1);
+arr2.sort(sortNumbers);
+
+var arr3 = [].concat(arr1); // sort in reverse order
+arr3.sort( function(a,b) { return b-a;} ); //an array is sorted numerically and ascending
+
+var randArr=[25, 87, "Juha", "John", 56, "Hi!"]
+randArr.sort(function() {return 0.5 - Math.random()}) // random sorting
+	 
+var div = document.getElementById("results");
+div.innerHTML += arr1.toString() + "<br>";
+div.innerHTML += arr2.toString() + "<br>";
+div.innerHTML += arr3.toString() + "<br>";
+div.innerHTML += randArr.toString() + "<br>";
+
+	
+  </script>
+
+</body>
+
+</html>
+

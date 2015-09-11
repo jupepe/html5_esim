@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+<title>DOM example</title>
+<meta charset="UTF-8"> 
+
+<style>
+
+ul#tabnav {
+ padding-bottom: 5px;
+ border-bottom: 1px solid #333;
+ margin: 10px 5px 10px 5px;
+}
+
+ul#tabnav li.tab_active, ul#tabnav li.tab_inactive {
+ list-style: none;
+ padding: 5px;
+ margin: 0px 2px 0px 2px;
+ display: inline;
+ border: 1px solid #333;
+ background-color: #f1f1f1;
+ border-bottom: none;
+ cursor: pointer;
+}
+
+ul#tabnav li.tab_active {
+ border-bottom: 1px solid #fff;
+ background-color: #fff;
+}
+
+</style>
+<script>
+function 
+ var arr = getElementsByName(document, "li");
+
+function setTabs(atab) {
+ 
+ var arr2 = getElementsByClassName(document, "li", "tab_active");
+ for ( var i=0, len=arr2.length; i<len; ++i ){
+   arr2[i].className = 'tab_inactive';
+}
+ atab.className = 'tab_active';
+}
+
+window.onload = setTabs;
+
+</script>
+
+<body>
+
+<h2>Demo of how to create tabs with pure JavaScript</h2>
+
+<ul id="tabnav">
+ <li class="tab_active" id="tab1">Tab 1</li>
+ <li class="tab_inactive" id="tab2">Tab 2</li>
+ <li class="tab_inactive" id="tab3">Tab 3</li>
+ <li class="tab_inactive" id="tab4">Tab 4</li>
+ <li class="tab_inactive" id="tab5">Tab 5</li>
+</ul>
+
+</body>
+</html>

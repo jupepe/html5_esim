@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+
+<head>
+
+<title>HTML5 elements examples</title>
+<meta charset="UTF-8"> 
+</head>
+
+<body>
+<p>Some text and the <mark>searched keyword</mark> in this text! 
+For example, a keyword or an error could be highlighted in the text with the mark element.
+</p>
+
+<div class="moreLineHeight">
+ <section>
+	<h1 style="font-size: 1.1em;">Progress bar</h1>
+ 	 <p>Updated via JavaScript: <progress id="pBar" value="0" max="100"><span>0</span>%</progress><br />
+	 	 Continuous: <progress><img src="images/loadinfo.gif" alt="Loading" /></progress></p>
+	</section>
+	<p>Tickets left: <meter min="0" max="20" value="12"></meter> 12/20</p>
+	<p contenteditable="true" spellcheck="false">Our store is closed from <time datetime="2013-12-24T00:00+02:00">24-12-13</time> to 
+	<time class="dtend" datetime="2013-12-26T23:59+02:00">26-12-13</time>.</p>
+	<p style="word-wrap: break-word;">AReallyLongWordWhichNeedsToBeLineBreaked<wbr>AtCertainPointsIfNecessary<wbr>ThisWordWillNeverEndLoremIpsumDolorSitAmetLoremIpsumDolorSitAmetLoremIpsumDolorSitAmet.</p>
+	<details style="padding-bottom: 1.5em;">
+		<summary>Info of the properties</summary>
+		<div>	   details tag specifies additional details that the user can view or hide on demand.
+      It can be used in conjunction with the summary tag to provide a heading that can be clicked on to expand/collapse the details as required.
+      </div>
+		<table>
+			<tr><th>Width:</th><td>600px</td></tr>
+			<tr><th>Height:</th><td>360px</td></tr>
+			<tr><th>Size:</th><td>62kt</td></tr>
+		</table>
+	</details>
+	<p>
+	<label>Select your Browser:</label>
+   <input type="text" id="browser" list="browsers" />
+		<datalist id="browsers">
+			<option value="Chrome"></option>
+			<option value="Firefox"></option>
+			<option value="Internet Explorer"></option>
+			<option value="Opera"></option>
+			<option value="Safari"></option>
+		</datalist>
+	</p>
+	<form onsubmit="return false" oninput="o.value = a.valueAsNumber + b.valueAsNumber" style="padding-bottom: 1.5em;">
+		<input name="a" type="number" step="any"> +
+		<input name="b" type="number" step="any"> =
+		<output name="o"></output>
+	</form>
+	<p>Other new HTML5 elements: bdi, command, keygen, menu, ruby, rt, rp</p>
+</div>

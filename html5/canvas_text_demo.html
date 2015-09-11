@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+<title>Canvas Text demo</title>
+<meta charset="UTF-8"> 
+ <script> 
+  
+  function drawText() {
+    var canvas = document.getElementById('canvas1');
+    var context = canvas.getContext('2d');
+        
+    context.stokeStyle = "#000000";
+    context.lineWidth  = 2;
+    context.beginPath();
+    context.moveTo(0, 175);
+    context.lineTo(200, 175);
+    context.stroke();
+    context.closePath();
+
+    context.font      = "16px Verdana";
+    context.fillStyle = "#000000";
+
+    context.textBaseline = "top";
+    context.fillText("top", 0, 175);
+
+    context.textBaseline = "middle";
+    context.fillText("middle", 120, 175);
+
+    context.textBaseline = "bottom";
+	context.textBaseline = "alphabetic";
+    context.fillText("bottom", 200, 175);
+	
+   context.font      = "normal 36px Verdana";
+   context.fillStyle = "#000000";
+   context.fillText("HTML5 Canvas Text", 40, 40);
+   var textMetrics = context.measureText("HTML5 Canvas Text");
+   
+   context.fillText("w:" + textMetrics.width, 460,40);
+
+  }
+  
+  window.addEventListener("load", drawText, false);
+ </script>
+  
+</head>
+
+<body>
+
+<h2>Canvas text demo uses many basic properties to draw text in canvas. </h2>>
+<canvas width=700 height=800 id="canvas1"></canvas>
+
+
+</body>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+  <title>closure demo</title>
+  <meta charset="iso-8859-1">
+  
+  <script>
+    
+    function Person() {
+	  this._age = 30; // "_age is fake private property "
+	  	  
+      this.setAge = function(age) {
+	    if (age < 0)
+		  throw "Age negative";
+		if (age > 100)
+		  throw "Age over 100 not allowed";
+		this._age = age;
+	  }
+	  
+	  this.getAge = function() {
+	    return this._age;
+	  }
+	  this.age = this.getAge;
+	}
+	
+	
+	function writeResults() {
+	 var bill = new Person();
+	 bill.setAge(31);
+	 bill._age = 32; // "illegal access" to private property, which is still possible!
+	 var jill = new Person();
+	 jill.setAge(27); 
+	 
+	 var div = document.getElementById("results");
+	 div.innerHTML += "Bill's age is " + bill.getAge() + "<br>";
+	 div.innerHTML += "Jill's age is " + jill.getAge() + "<br>";
+	}
+	
+	
+  </script>
+</head>
+
+<body onload="writeResults()">
+<h2>Example of How to use Objects in JavaScript</h2>
+
+<div id="results" style="position: relative; left: 200px;"> </div>
+
+
+</body>
+
+</html>
+

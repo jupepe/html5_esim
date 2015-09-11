@@ -1,0 +1,33 @@
+children(), 
+parent(), 
+prev()
+next() 
+siblings() 
+------------------------------------------------
+<body>
+  <h1>Otsikko</h1>
+  <h2>Otsikko 2</h2>
+  <h3>Otsikko 3 </h3>
+
+  <ul>
+   <li><a href="http://www.w3schools.com/js/js_obj_intro.asp">Properties</a> are values associated with objects
+
+   <li><a href="http://www.w3schools.com/js/js_obj_intro.asp">Methods</a> are actions that objects can perform
+   <li><a href="http://www.w3schools.com/js/js_functions.asp">Functions</a> can be used with Objects
+   <li><a href="http://javascript.info/tutorial/objects#creating-objects">Creating</a> objects 
+  </ul>
+</body>
+------------------------------------------------------------------
+
+DOM puuta tutkimalla saadaan selvitettyä sisaruussuhteet yms. ilman ohjelmointia!
+
+body children? h1,h2,h3,ul
+h3 parent?  body
+h1 siblings? h2,h3,ul
+ul children? kaikki li:t
+h1 next?     h2
+h2 previous? h1
+
+body children ('h2') - vain kaikki h2 lapset!
+------------------------------------------------------------------
+

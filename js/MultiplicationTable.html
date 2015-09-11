@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+ <title>multiplication Table</title>
+ <meta charset="UTF-8"> 
+
+ <script>
+ function multiplicationTable() {  
+  var upper = parseInt(document.getElementById("upperLimit").value);
+  if (upper > 50 || upper < 10) upper = 10;
+
+  var str = "<table border='1'>";
+  for (x=1; x<=upper; x++) {
+    str += "<tr>";
+    for (y=1; y<=upper; y++) {
+      result=x*y;
+      str += "<td>" + result + "</td>";
+    }
+    str += "</tr>";	
+  }
+  str += "</table>";	
+  
+  document.getElementById("multiplicationTable").innerHTML = str;
+ }
+</script>
+</head>
+
+<body>
+
+<h2>Example of How to write new content in old way (document.write) into the HTML document </h2>
+
+<div style="color:red">See "Selection Source" to show created HTML content</div>
+
+
+<div id="multiplicationTable"> Results will exist here</div>
+<form name="f">
+   <div>Give Upper Limit</div>
+ <input type="text" id="upperLimit"  value="10" >
+ <input type="button" id="count" value="count multiplication table" onclick="multiplicationTable()" >
+</form>
+</body>
+</html>
