@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN">
+
+<html>
+<head>
+<title>Valitse lomaviikko</title>
+</head>
+<body>
+
+<h2>Tervetuloa valitsemaan Lomaviikkoa Huvit&Lomat Oy:n majoitukseen</h2>
+
+<h3>Anna taustatiedot</h3>
+
+<form>
+etunimi: 
+<input type="text" name="etunimi">
+<br>
+sukunimi: 
+<input type="text" name="sukunimi">
+<br>
+Sähköpostiosoite
+<input type="text" name="email">
+<br>
+<span>Sukupuoli</span>Nainen: <input type="radio" value="nainen" checked="checked" name="sukupuoli">
+Mies:  <input type="radio" value="mies" name="sukupuoli">
+<br>
+Ikä:
+<input type="text" name="ika">
+<br>
+
+<h3>Valitse loman tiedot</h3>
+
+Paikkakunta: <SELECT size="1" name="paikka">
+ <OPTION selected>Helsinki
+ <OPTION>Tampere
+ <OPTION>Jyväskylä
+ <OPTION>Oulu
+ <OPTION>Kuusamo
+ <OPTION>Kittilä
+ <OPTION>Inari
+ <OPTION>Rovaniemi
+</SELECT>
+
+<br>
+Lomakuukausi: <SELECT size="1" name="kuukausi">
+ <OPTION>Tammikuu
+ <OPTION>Helmikuu
+ <OPTION>Maaliskuu
+ <OPTION>Huhtikuu
+ <OPTION>Toukokuu
+ <OPTION>Kesäkuu
+ <OPTION selected>Heinäkuu
+ <OPTION>Elokuu
+ <OPTION>Syyskuu
+ <OPTION>Lokakuu
+ <OPTION>Marraskuu
+ <OPTION>Joulukuu
+</SELECT>
+<br>
+
+Lomaviikko (1-52): <input type="text" name="viikko_nro">
+<br>
+
+<input type=submit >
+
+
+</form>
+
+
+<div id="tulostus" style="background-color: yellow"></div>
+
+<div style="background-color: gray; font-size: 0.8em;">
+ <p >Harjoitus: Tehdään lomakkeen päivitys, siten että käytetään uusia HTML 5 -elementtejä, attribuutteja sekä CSS3-ominaisuuksia:
+ Käytetään seuraavia elementtejä tai attribuutteja lomakkeen elementeissä
+ <ul>
+  <li>Lisätään jokaiselle lomakkeen syöttöelementille div-lohko (class=entry), jossa selitysteksti label-elementissä, jonka jälkeen varsinainen lomake-elementti.   
+  <li>Sähköpostiosoite -muutetaan tyypiksi "email"
+  <li>ikä -  tyypiksi "number" ja sallittu väli 1-100
+  <li>Lomakuukausi - tyypiksi "number" ja sallittu väli 1-12
+  <li>Lomaviikko - tyypiksi "number" ja sallittu väli 1-52
+ </ul>
+ 
+ <p>Määrittele CSS-tyylit, joilla saadaan selville, onko lomakkeeseen syötetty oikea arvo välittömästi joko värin muutoksella tai tulostamalla label-elementtiin tietoa. CSS-pseudo-elementit ovat seuraavat
+ <ul>
+ <li>Määrittele CSS-tyylit lomakkeen elementeille style-lohkoon
+ <li>Lisää seuraava CSS-tyyli input:required + label::after { content: "*"; }
+ <li>input:required:invalid  - jos vaaditun lomakkeen kentän arvo väärin
+ <li> input:required:valid - jos vaaditun lomakkeen kentän arvo kunnossa
+ <li>input[type='number']:out-of-range - jos vaaditun lomakkeen number-tyyppisen kentän arvo määriteltyjen rajojen ulkopuolella
+ </ul>input[type='number']:in-range - jos vaaditun lomakkeen number-tyyppisen kentän arvo määritellyissä rajoissa
+ </ul>
+ <div>Lisätehtävä: Jos osaat JavaScriptiä, niin tulostetaan JavaScriptillä kaikki lomakkeelle syötetyt tiedot div-elementtiin "tulostus"</div>
+</div>
+
+
+</body>
+</html>

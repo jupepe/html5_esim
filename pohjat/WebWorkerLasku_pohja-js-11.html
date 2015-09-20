@@ -1,0 +1,35 @@
+ <!DOCTYPE html>
+<html>
+<body>
+
+<p>Count numbers in a loop: 
+    <button onclick="startCounter()">Start counting</button>
+    <button onclick="stopCounter()">Stop and Clear counting</button>
+    <output id="countingResults"></output>
+</p>
+
+<script>
+var worker;
+
+function startCounter() {
+    if(typeof(Worker) !== "undefined") { // tarkastaa, onko Web Worker oli määritelty selaimessa
+        if(typeof(worker) == "undefined") {
+            worker = new Worker("count_numbers.js");
+        }
+        worker.onmessage = function(event) {
+            document.getElementById("countingResults").innerHTML += event.data;
+        };
+    } else {
+        document.getElementById("countingResults").innerHTML = "Web Worker tukea ei ole selaimessa.";
+    }
+}
+
+function stopCounter() {
+    worker.terminate();
+    worker = undefined;
+}
+
+</script>
+
+</body>
+</html>
